@@ -1,6 +1,6 @@
 Microblog
 ===================
-
+[![CircleCI](https://circleci.com/gh/WissamSawah/microblog.svg?style=svg)](https://app.circleci.com/pipelines/github/WissamSawah/microblog)
 
 
 Course material for a devops course, aimed at a Swedish course in computer science on University level new to devops. The students are to further develop this application and integreate it with new tools.
