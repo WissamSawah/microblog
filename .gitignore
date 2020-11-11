@@ -5,6 +5,7 @@ logs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
+mysql-data/
 mysql-data
 *.py[cod]
 *$py.class
