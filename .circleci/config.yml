@@ -4,7 +4,7 @@ executors:
   docker-publisher:
     environment:
       IMAGE_NAME: prod
-      DH_IMAGE_NAME: microblog-prod
+      DH_IMAGE_NAME: microblog_prod
     docker:
       - image: circleci/buildpack-deps:stretch
 jobs:
