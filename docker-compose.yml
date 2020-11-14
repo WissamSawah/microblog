@@ -12,6 +12,8 @@ services:
     volumes:
       - ./app:/home/microblog_test/app
       - ./tests:/home/microblog_test/tests
+    restart:
+            "always"
 
   prod:
     build:
@@ -41,6 +43,9 @@ services:
             - MYSQL_PASSWORD=Wesam1995
     volumes:
       - ./mysql-data:/var/lib/mysql
+
+    restart:
+            "always"
 
     networks:
       microblog-network:
