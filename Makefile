@@ -211,4 +211,4 @@ install-test:
 # target: install-deploy                 - Install all Python packages specified in requirements/{deploy.txt}
 .PHONY: install-deploy
 install-deploy:
-    ${pip} install -r requirements/deploy.txt
+	${pip} install -r requirements/deploy.txt
