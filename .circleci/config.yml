@@ -67,10 +67,12 @@ jobs:
                 . venv/bin/activate
                 pip install -r requirements/deploy.txt
                 pip install ansible
+                pip install ansible[azure]
         - run:
             name: Run ansible playbook
             command: |
                 . ../venv/bin/activate
+                pip install ansible[azure]
                 ansible-playbook gather_vm_instances.yml app_server.yml
             working_directory: ansible
 workflows:
