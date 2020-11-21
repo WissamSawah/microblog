@@ -1,0 +1,8 @@
+version: "3"
+services:
+  start:
+    container_name: start
+    image: wissamsawah/microblog_prod:latest
+    restart: always
+    ports:
+      - "8000:5000"

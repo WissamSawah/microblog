@@ -1,0 +1,16 @@
+---
+packages:
+    - fail2ban
+    - tmux
+    - git
+    - unattended-upgrades
+
+root_password: $6$BdlPIX9PpeL$pXf1LL.HBSxiSlBbA61J0gDXcHXc48HpcTEsb9EWQzJm/pQCqv8cVuwRwRtBDA5txNT4XKZsfdyWZgTfcG5W0/
+
+server_user: deploy
+server_user_password: $6$ykr0oZyAAe8IY2$2MX2rsJiv6g4JFofliSqNPxKmbQBEzBN6lmHMfLF/Ah.1P.bkxGYEk.33kPrWD77nPS3JOie2zkB.SczM7Iq1.
+server_user_groups:
+    - sudo
+
+pub_ssh_key_location:
+    - ~/.ssh/ansible.pub

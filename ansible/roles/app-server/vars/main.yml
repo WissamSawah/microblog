@@ -1,0 +1,6 @@
+---
+docker_container_name: microblog
+docker_image: wissamsawah/microblog_prod:latest
+
+host_port: 8000
+container_port: 5000

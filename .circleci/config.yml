@@ -54,6 +54,25 @@ jobs:
           command: |
             echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
             docker push wissamsawah/microblog-prod:latest
+
+  ansible:
+    executor: docker-publisher
+    steps:
+        - checkout
+        - run:
+            name: Install ansible
+            command: |
+                sudo apt-get install python3-venv
+                python3 -m venv venv
+                . venv/bin/activate
+                pip install -r requirements/deploy.txt
+                pip install ansible
+        - run:
+            name: Run ansible playbook
+            command: |
+                . ../venv/bin/activate
+                ansible-playbook gather_vm_instances.yml app_server.yml
+            working_directory: ansible
 workflows:
       version: 2
       build-master:
@@ -71,6 +90,12 @@ workflows:
           - publish-latest:
               requires:
                 - build
+              filters:
+                branches:
+                  only: master
+          - ansible:
+              requires:
+                - publish-latest
               filters:
                 branches:
                   only: master

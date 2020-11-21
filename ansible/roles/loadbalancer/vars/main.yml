@@ -1,0 +1,5 @@
+---
+email: "wesam.sawah@me.com"
+lb_method: "ip_hash"
+domain_name: wissamsawah.me
+server_user: deploy

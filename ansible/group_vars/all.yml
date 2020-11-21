@@ -1,13 +1,13 @@
 ---
 # Here you can add variables that will be available for all hosts.
 region: northeurope
-resource_group: <resource-id> # Change me
-domain_name: <domain> # Change me
+resource_group: bth-kmom01-aisa18-28c434 # Change me
+domain_name: wissamsawah.me # Change me
 
 root_user: azureuser
 
 vmtags:
-    StudentId: "<akronym>" # Change me
+    StudentId: "aisa18" # Change me
 
 
-pub_ssh_key_location: '/home/<user>/.ssh/<key-name>.pub' # Change me, your local ssh key!
+pub_ssh_key_location: '/Users/wissamsawah/.ssh/ansible.pub' # Change me, your local ssh key!
