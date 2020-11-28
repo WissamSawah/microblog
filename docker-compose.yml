@@ -31,8 +31,7 @@ services:
 
     restart:
             "always"
-    networks:
-      microblog-network:
+
 
   db:
     image: mysql/mysql-server:5.7
@@ -46,13 +45,3 @@ services:
 
     restart:
             "always"
-
-    networks:
-      microblog-network:
-
-networks:
-  microblog-network:
-    ipam:
-      driver: default
-      config:
-        - subnet: "172.16.238.0/16"
