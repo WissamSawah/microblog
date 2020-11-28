@@ -1,7 +1,6 @@
 #!/bin/sh
+source /home/microblog/venv/bin/activate
 
-source venv/bin/activate
-ls
 while true; do
     flask db upgrade
     if [[ "$?" == "0" ]]; then
@@ -10,4 +9,5 @@ while true; do
     echo Upgrade command failed, retrying in 5 secs...
     sleep 5
 done
-exec gunicorn -b :5000 --access-logfile - --error-logfile - microblog:app
+
+exec gunicorn --statsd-host=localhost:9125 --statsd-prefix=helloworld --bind :5000 --access-logfile - --error-logfile - microblog:app

@@ -7,7 +7,7 @@ services:
             - MYSQL_DATABASE=microblog
             - MYSQL_USER=microblog
             - MYSQL_PASSWORD=Wesam1995
-            - MYSQL_ROOT_PASSWORD=Wesam1995
+            - MYSQL_ROOT_PASSWORD="root"
         restart:
             "always"
         ports:

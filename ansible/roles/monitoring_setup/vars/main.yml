@@ -1,0 +1,4 @@
+---
+
+server_user: deploy
+node_user: node_exporter

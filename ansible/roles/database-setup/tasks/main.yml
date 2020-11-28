@@ -10,3 +10,23 @@
 - name: Run docker-compose up to start MySql
   docker_compose:
     project_src: /home/{{ server_user }}/
+
+-   name: Access MySQL container
+    shell: sudo docker exec -it microblog-database mysql -uroot -p < files/setup.sql
+
+-   name: Pull mysql exporter container
+    command: docker pull prom/mysqld-exporter
+#
+-   name: Start exporter container
+    command: |
+        docker run -d
+        -p 9104:9104
+        --network host
+        -e DATA_SOURCE_NAME="exporter:dbpass@(localhost:3306)/"
+        --restart always
+        prom/mysqld-exporter:latest
+        --collect.auto_increment.columns
+        --collect.binlog_size
+        --collect.engine_innodb_status
+        --collect.engine_tokudb_status
+        --collect.global_status

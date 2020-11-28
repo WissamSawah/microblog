@@ -8,3 +8,17 @@
     restart_policy: always
     env:
       DATABASE_URL: "mysql+pymysql://microblog:Wesam1995@{{ groups['database'][0] }}/microblog"
+
+-   name: Pull the statsd container
+    command: docker pull prom/statsd-exporter
+
+-   name: Template the statsd conf file
+    template:
+        src: ./templates/statsd.conf2
+        dest: statsd.conf
+        owner: deploy
+        group: deploy
+        mode: ugo+rwx
+
+-   name: Start the statsd container
+    command: docker run -dP --net=host -v ${PWD}/statsd.conf:/statsd/statsd.conf prom/statsd-exporter "--statsd.mapping-config=/statsd/statsd.conf"

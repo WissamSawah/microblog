@@ -1,6 +1,5 @@
 #!/bin/sh
 source venv/bin/activate
-
+cd ../
 cd microblog
-ls
 make test-unit
