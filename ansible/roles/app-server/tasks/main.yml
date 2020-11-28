@@ -14,7 +14,7 @@
 
 -   name: Template the statsd conf file
     template:
-        src: ./templates/statsd.conf2
+        src: ./templates/statsd.conf.j2
         dest: statsd.conf
         owner: deploy
         group: deploy
