@@ -32,7 +32,7 @@
           owner: "{{ server_user }}"
           group: "{{ server_user }}"
           mode: '0644'
-    
+
     - name: Reload daemon
       command: sudo systemctl daemon-reload
 
@@ -48,7 +48,7 @@
     - name: Verify that node exporter is correctly up and running with curl
       command: curl http://localhost:9100/metrics
 
-    # # Prometheus installation and setup
+    # Prometheus installation and setup
 
     - name: Start by downloading prometheus file
       get_url:
@@ -74,8 +74,8 @@
         group: "{{ server_user }}"
         mode: '0644'
 
-    # - name: Start prometheus
-    #   command: sudo ./prometheus &
+    - name: Start prometheus
+      command: sudo ./prometheus &
 
     - name: Download grafana file
       get_url:
@@ -90,7 +90,7 @@
       lineinfile:
         path: /etc/grafana/grafana.ini
         regexp: '^;domain'
-        line: 'domain = carverpro.com'
+        line: 'domain = wissamsawh.me'
         state: present
 
     - name: Append to grafana.ini
@@ -99,7 +99,6 @@
         regexp: '^;root_url'
         line: 'root_url = %(protocol)s://%(domain)s/grafana/'
         state: present
-
 
     - name: Reload daemon
       command: sudo systemctl daemon-reload
