@@ -56,6 +56,10 @@ jobs:
           root: .
           paths:
             - ./image.tar
+      - snyk/scan:
+          docker-image-name: $IMAGE_NAME
+          additional-arguments: "--policy-path=.snyk"
+
   publish-latest:
     executor: docker-publisher
     steps:
