@@ -57,7 +57,7 @@ jobs:
           paths:
             - ./image.tar
       - snyk/scan:
-          docker-image-name: $IMAGE_NAME
+          docker-image-name: wissamsawah/microblog-prod
           additional-arguments: "--policy-path=.snyk"
 
   publish-latest:
