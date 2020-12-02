@@ -97,6 +97,19 @@ validate:
 
 
 
+# target: Bandit test                     - Run bandit with config file
+.PHONY: bandit
+bandit:
+	@bandit -c .bandit.yml -r app
+
+
+# target: validate                     - Run bandit with config file
+.PHONY: zap
+zap:
+	@sudo docker run owasp/zap2docker-weekly zap-baseline.py -t https://wissamsawah.me
+
+
+
 # target: validate-docker              - Validate Dockerfile with hadolint
 .PHONY: validate-docker
 validate-docker:
