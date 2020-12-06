@@ -73,7 +73,7 @@ jobs:
           name: Publish Docker Image to Docker Hub
           command: |
             echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
-            docker push wissamsawah/microblog-prod:latest
+            docker push wissamsawah/microblog-prod:no-statsd
 
   # ansible:
   #   executor: docker-publisher
