@@ -47,7 +47,7 @@
             - entry: "{{ output_ip_address.state.ip_address }}"
     when: item.name == 'loadBalancer'
     loop: "{{ relative_names }}"
-    loop_control: 
+    loop_control:
         loop_var: relative_name
     delegate_to: 127.0.0.1
 

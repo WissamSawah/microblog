@@ -48,7 +48,7 @@ jobs:
           command: docker-compose up --build -d $IMAGE_NAME
       - run:
           name: Tag build with latest
-          command: docker tag $DH_IMAGE_NAME:latest wissamsawah/microblog-prod:latest
+          command: docker tag $DH_IMAGE_NAME:no-statsd wissamsawah/microblog-prod:no-statsd
       - run:
           name: Archive Docker image
           command: docker save -o image.tar wissamsawah/microblog-prod
@@ -75,26 +75,26 @@ jobs:
             echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
             docker push wissamsawah/microblog-prod:latest
 
-  ansible:
-    executor: docker-publisher
-    steps:
-        - checkout
-        - run:
-            name: Install ansible
-            command: |
-                sudo apt-get install python3-venv
-                python3 -m venv venv
-                . venv/bin/activate
-                pip install -r requirements/deploy.txt
-                pip install ansible
-                pip install ansible[azure]
-        - run:
-            name: Run ansible playbook
-            command: |
-                . ../venv/bin/activate
-                pip install ansible[azure]
-                ansible-playbook gather_vm_instances.yml app_server.yml
-            working_directory: ansible
+  # ansible:
+  #   executor: docker-publisher
+  #   steps:
+  #       - checkout
+  #       - run:
+  #           name: Install ansible
+  #           command: |
+  #               sudo apt-get install python3-venv
+  #               python3 -m venv venv
+  #               . venv/bin/activate
+  #               pip install -r requirements/deploy.txt
+  #               pip install ansible
+  #               pip install ansible[azure]
+  #       - run:
+  #           name: Run ansible playbook
+  #           command: |
+  #               . ../venv/bin/activate
+  #               pip install ansible[azure]
+  #               ansible-playbook gather_vm_instances.yml app_server.yml
+  #           working_directory: ansible
 
 workflows:
       version: 2
@@ -120,9 +120,9 @@ workflows:
               filters:
                 branches:
                   only: master
-          - ansible:
-              requires:
-                - publish-latest
-              filters:
-                branches:
-                  only: master
+          # - ansible:
+          #     requires:
+          #       - publish-latest
+          #     filters:
+          #       branches:
+          #         only: master

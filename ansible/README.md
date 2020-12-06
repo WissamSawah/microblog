@@ -71,9 +71,16 @@ The file should look like the following:
 
 ```
 [default]
+<<<<<<< HEAD
 ad_user=aisa18@student.bth.se
 password=Wesam19955
 subscription_id=4069d1a2-eaef-4e4a-ba0f-a511e11f3922
+=======
+ad_user=<acronym>@student.bth.se
+password=<password>
+subscription_id=<XXxxxxXX-XxxX-XxxX-XxxX-XXxxxXXXxxXX>
+tenant=<yyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy>
+>>>>>>> upstream/master
 ```
 
 Replace `acronym` with your student acronym. The `password` should be the same you use to login in to azure. Your `subscription_id` can be found inside the *Information* box when overlooking your resource group on the website.
@@ -84,6 +91,7 @@ The environmental variables uses the same values but slightly different keys:
 export AZURE_AD_USER='acronym@student.bth.se'
 export AZURE_PASSWORD='<password>'
 export AZURE_SUBSCRIPTION_ID='<XXxxxxXX-XxxX-XxxX-XxxX-XXxxxXXXxxXX>'
+export AZURE_TENANT=`<yyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy>`
 ```
 
 #### Ansible vault
