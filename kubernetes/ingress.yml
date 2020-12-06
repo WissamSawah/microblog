@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "microblog-ingress"
+  # Gör massa redirects och strular när jag försöker accessa microblog.info via browsern. Funkar bra utan det. 
+  # annotations:
+  #   nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - host: microblog.info
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+            service:
+               name: microblog
+               port:
+                number: 5000
